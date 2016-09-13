@@ -6,7 +6,7 @@ using FISCA;
 using FISCA.Presentation.Controls;
 using System.Collections.Generic;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     //public enum CardType { 點名卡 = 56, 請假卡 = 12 };
 

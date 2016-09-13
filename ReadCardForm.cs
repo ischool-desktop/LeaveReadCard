@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using InternalLib;
 using K12.Data;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     public partial class ReadCardForm : BaseForm
     {

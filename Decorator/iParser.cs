@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
 	public abstract class iParser
 	{

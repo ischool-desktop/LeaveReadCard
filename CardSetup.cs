@@ -9,7 +9,7 @@ using System.Xml.Linq;
 using InternalLib;
 using System.Xml.XPath;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     /// <summary>
     /// 學生出缺席讀卡設定。

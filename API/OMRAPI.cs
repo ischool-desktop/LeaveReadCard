@@ -6,7 +6,7 @@ using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text;
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     // ----------------------------------------------------------------------------
     // OMR API for SR-2200 Header

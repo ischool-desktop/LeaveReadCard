@@ -10,7 +10,7 @@ using System.Data;
 using FISCA.Data;
 using System.Collections.Concurrent;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     internal class StudentRecordFinder
     {

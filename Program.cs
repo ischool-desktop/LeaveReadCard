@@ -6,29 +6,29 @@ using FISCA;
 using FISCA.Presentation;
 using FISCA.Permission;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     public static class Program
     {
-        public const string SetupFormCoode = "出勤請假讀卡模組.出勤讀卡設定";
+        public const string SetupFormCoode = "請假讀卡模組.請假讀卡設定";
 
-        public const string ReadCardFormCode = "出勤請假讀卡模組.出勤讀卡";
+        public const string ReadCardFormCode = "請假讀卡模組.請假讀卡";
 
         [MainMethod()]
         public static void Main()
         {
             RibbonBarItemManager ribbon = FISCA.Presentation.MotherForm.RibbonBarItems;
 
-            ribbon["學務作業", "出勤/請假讀卡"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
+            ribbon["學務作業", "請假讀卡"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
 
-            MenuButton button = ribbon["學務作業", "出勤/請假讀卡"]["設定"]["讀卡設定"];
+            MenuButton button = ribbon["學務作業", "請假讀卡"]["設定"]["讀卡設定"];
             button.Enable = UserAcl.Current[SetupFormCoode].Executable;
             button.Click += delegate
             {
                 new SetupForm().ShowDialog();
             };
 
-            button = ribbon["學務作業", "出勤/請假讀卡"]["讀卡"];
+            button = ribbon["學務作業", "請假讀卡"]["讀卡"];
             button.Image = Properties.Resources.ReadCard;
             button.Enable = UserAcl.Current[ReadCardFormCode].Executable;
             button.Click += delegate
@@ -37,8 +37,8 @@ namespace AttendanceReadCard
             };
 
             Catalog catalog = RoleAclSource.Instance["學務作業"]["功能按鈕"];
-            catalog.Add(new RibbonFeature(SetupFormCoode, "出勤/請假讀卡設定"));
-            catalog.Add(new RibbonFeature(ReadCardFormCode, "出勤/請假讀卡"));
+            catalog.Add(new RibbonFeature(SetupFormCoode, "請假讀卡設定"));
+            catalog.Add(new RibbonFeature(ReadCardFormCode, "請假讀卡"));
         }
 
         /// <summary>

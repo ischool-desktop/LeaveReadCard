@@ -1,4 +1,4 @@
-﻿namespace AttendanceReadCard
+﻿namespace LeaveReadCard
 {
     partial class CardReadingForm
     {

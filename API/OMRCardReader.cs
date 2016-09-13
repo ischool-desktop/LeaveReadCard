@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     public static class OMRCardReader
     {

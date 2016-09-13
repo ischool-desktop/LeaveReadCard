@@ -1,4 +1,4 @@
-﻿namespace AttendanceReadCard
+﻿namespace LeaveReadCard
 {
     partial class ReadCardForm
     {
@@ -351,8 +351,12 @@
             this.btnBeginRead.Size = new System.Drawing.Size(75, 23);
             this.btnBeginRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnBeginRead.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnAbsence,
             this.btnLeave});
+            
+    
+            // 2016/9/13 穎驊註解，將點名卡功能移除，使本模組只做請假卡
+            //this.btnAbsence,
+            
             this.btnBeginRead.TabIndex = 4;
             this.btnBeginRead.Text = "開始讀卡";
             // 

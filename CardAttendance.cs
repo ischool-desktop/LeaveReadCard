@@ -5,7 +5,7 @@ using System.Text;
 using K12.Data;
 using System.Xml.Linq;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     /// <summary>
     /// 代表一筆缺曠資料。

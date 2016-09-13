@@ -9,11 +9,13 @@ using FISCA.Presentation.Controls;
 using K12.Data;
 using System.Linq;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     //2016/9/2 穎驊筆記，本次最大的更動就是將原本設定遲、曠的cbox :cboLateMap、cboEmptyMap拿掉，
     //改為使用者可以針對各個節次定義兩洞一組的1_0、1_1、0_1 所對應的缺曠類別，
     //如果以後還要用cboLateMap、cboEmptyMap 再去UI 家回來就可以囉~
+
+    //2016/9/13 穎驊筆記，將點名卡功能自UI移除，以後此模組將只會有請假卡功能
 
     public partial class SetupForm : BaseForm
     {
@@ -29,24 +31,24 @@ namespace AttendanceReadCard
             try
             {
                 Config = Campus.Configuration.Config.App["學生出缺席讀卡設定"];
+                
+                ////顯示「節次對照表」於 DataGridView。
+                //ConfigData pmap = Campus.Configuration.Config.App["節次對照表"];
+                //XElement xmlperiod = XElement.Parse(pmap.PreviousData.OuterXml);
+                //foreach (XElement period in xmlperiod.Elements("Period"))
+                //    chPeriod.Items.Add(period.Attribute("Name").Value);
 
-                //顯示「節次對照表」於 DataGridView。
-                ConfigData pmap = Campus.Configuration.Config.App["節次對照表"];
-                XElement xmlperiod = XElement.Parse(pmap.PreviousData.OuterXml);
-                foreach (XElement period in xmlperiod.Elements("Period"))
-                    chPeriod.Items.Add(period.Attribute("Name").Value);
+                ////列出卡片上所有可設定節次。
+                //string[] periods = Program.PeriodNameList;
+                //foreach (string period in periods)
+                //{
+                //    DataGridViewRow row = new DataGridViewRow();
 
-                //列出卡片上所有可設定節次。
-                string[] periods = Program.PeriodNameList;
-                foreach (string period in periods)
-                {
-                    DataGridViewRow row = new DataGridViewRow();
+                //    // 2016/9/1 穎驊新增，使介面載入上次設定的個別節次假別對照
+                //    row.CreateCells(dgvPeriodMap, period, Config[period], Config[period + "leave_1_0"], Config[period + "leave_1_1"], Config[period + "leave_0_1"]);
 
-                    // 2016/9/1 穎驊新增，使介面載入上次設定的個別節次假別對照
-                    row.CreateCells(dgvPeriodMap, period, Config[period], Config[period + "leave_1_0"], Config[period + "leave_1_1"], Config[period + "leave_0_1"]);
-
-                    dgvPeriodMap.Rows.Add(row);
-				}
+                //    dgvPeriodMap.Rows.Add(row);
+                //}
 
                 //顯示「假別對照表」於 ComboBox。
                 ConfigData absence = Campus.Configuration.Config.App["假別對照表"];
@@ -58,19 +60,19 @@ namespace AttendanceReadCard
 
 					chLeave.Items.Add(abs.Attribute("Name").Value);
 
-                    // 2016/9/1 穎驊新增，讓使用者可以針對各個節數定義畫卡 1_0、1_1、0_1 在系統中的假別是甚麼，
-                    //(每節次的讀卡是兩洞一組，1_0 的意思是第一洞塗滿、第二洞沒塗)
-                    ch_1_0.Items.Add(abs.Attribute("Name").Value);
-                    ch_1_1.Items.Add(abs.Attribute("Name").Value);
-                    ch_0_1.Items.Add(abs.Attribute("Name").Value);
+                    //// 2016/9/1 穎驊新增，讓使用者可以針對各個節數定義畫卡 1_0、1_1、0_1 在系統中的假別是甚麼，
+                    ////(每節次的讀卡是兩洞一組，1_0 的意思是第一洞塗滿、第二洞沒塗)
+                    //ch_1_0.Items.Add(abs.Attribute("Name").Value);
+                    //ch_1_1.Items.Add(abs.Attribute("Name").Value);
+                    //ch_0_1.Items.Add(abs.Attribute("Name").Value);
 
 				}
 
                 //給使用者留空白選項
-                chPeriod.Items.Add("");                
-                ch_1_0.Items.Add("");
-                ch_1_1.Items.Add("");
-                ch_0_1.Items.Add("");
+                //chPeriod.Items.Add("");                
+                //ch_1_0.Items.Add("");
+                //ch_1_1.Items.Add("");
+                //ch_0_1.Items.Add("");
 
 
 				//顯示「假別對照表」於 DataGridView。
@@ -134,7 +136,7 @@ namespace AttendanceReadCard
                     cboReadingCardStartYear.Items.Add(104+i);
                 }
                                 
-                cboReadingCardStartYear.Text = Config["讀卡起始年"];
+                cboReadingCardStartYear.Text = Config["讀卡起始年--請假卡"];
 
             }
             catch (Exception ex)
@@ -159,42 +161,42 @@ namespace AttendanceReadCard
                 Config["OverrideOption"] = cboOverride.Text;
 
                 //2016/8/31 穎驊新增 讀卡起始年
-                Config["讀卡起始年"] = cboReadingCardStartYear.Text;
+                Config["讀卡起始年--請假卡"] = cboReadingCardStartYear.Text;
 
 
                 HashSet<string> duplicate = new HashSet<string>();
-                foreach (DataGridViewRow row in dgvPeriodMap.Rows)
-                {
-                    string cardPeriod = row.Cells[chCardPeriod.Index].Value + "";
-                    string period = row.Cells[chPeriod.Index].Value + "";
+                //foreach (DataGridViewRow row in dgvPeriodMap.Rows)
+                //{
+                //    string cardPeriod = row.Cells[chCardPeriod.Index].Value + "";
+                //    string period = row.Cells[chPeriod.Index].Value + "";
 
 
-                    string leave_1_0 = row.Cells[ch_1_0.Index].Value + "";
+                //    string leave_1_0 = row.Cells[ch_1_0.Index].Value + "";
 
-                    string leave_1_1 = row.Cells[ch_1_1.Index].Value + "";
+                //    string leave_1_1 = row.Cells[ch_1_1.Index].Value + "";
 
-                    string leave_0_1 = row.Cells[ch_0_1.Index].Value + "";
+                //    string leave_0_1 = row.Cells[ch_0_1.Index].Value + "";
 
-                    if (duplicate.Contains(period))
-                    {
-                        row.ErrorText = "節次重覆！";
-                        return;
-                    }
-                    else
-                        row.ErrorText = string.Empty;
+                //    if (duplicate.Contains(period))
+                //    {
+                //        row.ErrorText = "節次重覆！";
+                //        return;
+                //    }
+                //    else
+                //        row.ErrorText = string.Empty;
 
-                    Config[cardPeriod] = period;
+                //    Config[cardPeriod] = period;
 
-                    Config[cardPeriod + "leave_1_0"] = leave_1_0;
+                //    Config[cardPeriod + "leave_1_0"] = leave_1_0;
 
-                    Config[cardPeriod + "leave_1_1"] = leave_1_1;
+                //    Config[cardPeriod + "leave_1_1"] = leave_1_1;
 
-                    Config[cardPeriod + "leave_0_1"] = leave_0_1;
+                //    Config[cardPeriod + "leave_0_1"] = leave_0_1;
 
 
-                    if (!string.IsNullOrWhiteSpace(period))
-                        duplicate.Add(period);
-				}
+                //    if (!string.IsNullOrWhiteSpace(period))
+                //        duplicate.Add(period);
+                //}
 
 				duplicate = new HashSet<string>();
 				foreach (DataGridViewRow row in dgvLeaveMap.Rows)
@@ -253,28 +255,28 @@ namespace AttendanceReadCard
                 RTOut.WriteError(ex);
             }
         }
-        private void dgvPeriodMap_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvPeriodMap.BeginEdit(false);
+        //private void dgvPeriodMap_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    dgvPeriodMap.BeginEdit(false);
 
-        }
+        //}
 
         private void dgvClassMap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvClassMap.BeginEdit(false);
         }
 
-        private void dgvPeriodMap_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData.HasFlag(Keys.Delete))
-            {
-                foreach (DataGridViewCell cell in dgvPeriodMap.SelectedCells)
-                {
-                    if (cell.OwningColumn == chPeriod)
-                        cell.Value = string.Empty;
-                }
-            }
-        }
+        //private void dgvPeriodMap_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyData.HasFlag(Keys.Delete))
+        //    {
+        //        foreach (DataGridViewCell cell in dgvPeriodMap.SelectedCells)
+        //        {
+        //            if (cell.OwningColumn == chPeriod)
+        //                cell.Value = string.Empty;
+        //        }
+        //    }
+        //}
 
         private void dgvClassMap_KeyUp(object sender, KeyEventArgs e)
         {

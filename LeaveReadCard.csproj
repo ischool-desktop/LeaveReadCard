@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A6CEAAA6-E09A-4BA6-910F-6F0D053506E3}</ProjectGuid>
+    <ProjectGuid>{E5EF4C42-482F-471F-BB8B-8659681E6DCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AttendanceReadCard</RootNamespace>
-    <AssemblyName>AttendanceReadCard</AssemblyName>
+    <RootNamespace>LeaveReadCard</RootNamespace>
+    <AssemblyName>LeaveReadCard</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

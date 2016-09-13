@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     /// <summary>
     /// 鼓山高中缺席記錄卡資料解析。

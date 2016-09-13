@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
     internal class ClassAttendance : Dictionary<ClassDateTime, List<CardAttendance>>
     {

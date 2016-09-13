@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace AttendanceReadCard
+namespace LeaveReadCard
 {
 	public abstract class Decorator : iParser
 	{
