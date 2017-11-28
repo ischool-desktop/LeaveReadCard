@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--2017/11/27 羿均 for 世界高中讀卡(請假卡)-->
+<LeaveCardSetting>
+  <Paper>
+    <TotalRow>12</TotalRow>
+    <TotalColumn>35</TotalColumn>
+  </Paper>
+
+  <!--學號-->
+  <StudentNumber>
+    <!--學號第一碼-->
+    <Position Row="0" Col="0" Value="0" />
+    <Position Row="1" Col="0" Value="1" />
+    <Position Row="2" Col="0" Value="2" />
+    <Position Row="3" Col="0" Value="3" />
+    <Position Row="4" Col="0" Value="4" />
+    <Position Row="5" Col="0" Value="5" />
+    <Position Row="6" Col="0" Value="6" />
+    <Position Row="7" Col="0" Value="7" />
+    <Position Row="8" Col="0" Value="8" />
+    <Position Row="9" Col="0" Value="9" />
+    <!--學號第二碼-->
+    <Position Row="0" Col="1" Value="0" />
+    <Position Row="1" Col="1" Value="1" />
+    <Position Row="2" Col="1" Value="2" />
+    <Position Row="3" Col="1" Value="3" />
+    <Position Row="4" Col="1" Value="4" />
+    <Position Row="5" Col="1" Value="5" />
+    <Position Row="6" Col="1" Value="6" />
+    <Position Row="7" Col="1" Value="7" />
+    <Position Row="8" Col="1" Value="8" />
+    <Position Row="9" Col="1" Value="9" />
+    <!--學號第三碼-->
+    <Position Row="0" Col="2" Value="0" />
+    <Position Row="1" Col="2" Value="1" />
+    <Position Row="2" Col="2" Value="2" />
+    <Position Row="3" Col="2" Value="3" />
+    <Position Row="4" Col="2" Value="4" />
+    <Position Row="5" Col="2" Value="5" />
+    <Position Row="6" Col="2" Value="6" />
+    <Position Row="7" Col="2" Value="7" />
+    <Position Row="8" Col="2" Value="8" />
+    <Position Row="9" Col="2" Value="9" />
+    <!--學號第四碼-->
+    <Position Row="0" Col="3" Value="0" />
+    <Position Row="1" Col="3" Value="1" />
+    <Position Row="2" Col="3" Value="2" />
+    <Position Row="3" Col="3" Value="3" />
+    <Position Row="4" Col="3" Value="4" />
+    <Position Row="5" Col="3" Value="5" />
+    <Position Row="6" Col="3" Value="6" />
+    <Position Row="7" Col="3" Value="7" />
+    <Position Row="8" Col="3" Value="8" />
+    <Position Row="9" Col="3" Value="9" />
+    <!--學號第五碼-->
+    <Position Row="0" Col="4" Value="0" />
+    <Position Row="1" Col="4" Value="1" />
+    <Position Row="2" Col="4" Value="2" />
+    <Position Row="3" Col="4" Value="3" />
+    <Position Row="4" Col="4" Value="4" />
+    <Position Row="5" Col="4" Value="5" />
+    <Position Row="6" Col="4" Value="6" />
+    <Position Row="7" Col="4" Value="7" />
+    <Position Row="8" Col="4" Value="8" />
+    <Position Row="9" Col="4" Value="9" />
+    <!--學號第六碼-->
+    <Position Row="0" Col="5" Value="0" />
+    <Position Row="1" Col="5" Value="1" />
+    <Position Row="2" Col="5" Value="2" />
+    <Position Row="3" Col="5" Value="3" />
+    <Position Row="4" Col="5" Value="4" />
+    <Position Row="5" Col="5" Value="5" />
+    <Position Row="6" Col="5" Value="6" />
+    <Position Row="7" Col="5" Value="7" />
+    <Position Row="8" Col="5" Value="8" />
+    <Position Row="9" Col="5" Value="9" />
+  </StudentNumber>
+  <!--假別-->
+  <AbsenceType>
+    <Position Row="0" Col="7" Value="事假" />
+    <Position Row="2" Col="7" Value="病假" />
+    <Position Row="4" Col="7" Value="喪假" />
+    <Position Row="6" Col="7" Value="公假" />
+    <Position Row="8" Col="7" Value="生理假" />
+  </AbsenceType>
+  <!--請假日期-->
+  <AbsenceDate>
+    <!--年-->
+    <StarYear>
+      <Position Row="0" Col="9" Value="103" />
+      <Position Row="1" Col="9" Value="104" />
+      <Position Row="2" Col="9" Value="105" />
+      <Position Row="3" Col="9" Value="106" />
+      <Position Row="4" Col="9" Value="107" />
+      <Position Row="5" Col="9" Value="108" />
+      <Position Row="6" Col="9" Value="109" />
+      <Position Row="7" Col="9" Value="110" />
+      <Position Row="8" Col="9" Value="111" />
+      <Position Row="9" Col="9" Value="112" />
+      <Position Row="10" Col="9" Value="113" />
+      <Position Row="11" Col="9" Value="114" />
+    </StarYear>
+    <!--月-->
+    <StarMonth>
+      <Position Row="0" Col="10" Value="1" />
+      <Position Row="1" Col="10" Value="2" />
+      <Position Row="2" Col="10" Value="3" />
+      <Position Row="3" Col="10" Value="4" />
+      <Position Row="4" Col="10" Value="5" />
+      <Position Row="5" Col="10" Value="6" />
+      <Position Row="6" Col="10" Value="7" />
+      <Position Row="7" Col="10" Value="8" />
+      <Position Row="8" Col="10" Value="9" />
+      <Position Row="9" Col="10" Value="10" />
+      <Position Row="10" Col="10" Value="11" />
+      <Position Row="11" Col="10" Value="12" />
+    </StarMonth>
+    <!--日-->
+    <StarDay>
+      <Position Row="0" Col="11" Value="1" />
+      <Position Row="1" Col="11" Value="2" />
+      <Position Row="2" Col="11" Value="3" />
+      <Position Row="3" Col="11" Value="4" />
+      <Position Row="4" Col="11" Value="5" />
+      <Position Row="5" Col="11" Value="6" />
+      <Position Row="6" Col="11" Value="7" />
+      <Position Row="7" Col="11" Value="8" />
+      <Position Row="8" Col="11" Value="9" />
+      <Position Row="9" Col="11" Value="10" />
+
+      <Position Row="0" Col="12" Value="11" />
+      <Position Row="1" Col="12" Value="12" />
+      <Position Row="2" Col="12" Value="13" />
+      <Position Row="3" Col="12" Value="14" />
+      <Position Row="4" Col="12" Value="15" />
+      <Position Row="5" Col="12" Value="16" />
+      <Position Row="6" Col="12" Value="17" />
+      <Position Row="7" Col="12" Value="18" />
+      <Position Row="8" Col="12" Value="19" />
+      <Position Row="9" Col="12" Value="20" />
+
+      <Position Row="0" Col="13" Value="21" />
+      <Position Row="1" Col="13" Value="22" />
+      <Position Row="2" Col="13" Value="23" />
+      <Position Row="3" Col="13" Value="24" />
+      <Position Row="4" Col="13" Value="25" />
+      <Position Row="5" Col="13" Value="26" />
+      <Position Row="6" Col="13" Value="27" />
+      <Position Row="7" Col="13" Value="28" />
+      <Position Row="8" Col="13" Value="29" />
+      <Position Row="9" Col="13" Value="30" />
+      <Position Row="10" Col="13" Value="31" />
+    </StarDay>
+    <!--節-->
+    <StarPeriod>
+      <Position Row="0" Col="14" Value="早修" />
+      <Position Row="1" Col="14" Value="升旗" />
+      <Position Row="2" Col="14" Value="一" />
+      <Position Row="3" Col="14" Value="二" />
+      <Position Row="4" Col="14" Value="三" />
+      <Position Row="5" Col="14" Value="四" />
+      <Position Row="6" Col="14" Value="午休" />
+      <Position Row="7" Col="14" Value="五" />
+      <Position Row="8" Col="14" Value="六" />
+      <Position Row="9" Col="14" Value="七" />
+      <Position Row="10" Col="14" Value="八" />
+    </StarPeriod>
+    <!--年-->
+    <EndYear>
+      <Position Row="0" Col="15" Value="103" />
+      <Position Row="1" Col="15" Value="104" />
+      <Position Row="2" Col="15" Value="105" />
+      <Position Row="3" Col="15" Value="106" />
+      <Position Row="4" Col="15" Value="107" />
+      <Position Row="5" Col="15" Value="108" />
+      <Position Row="6" Col="15" Value="109" />
+      <Position Row="7" Col="15" Value="110" />
+      <Position Row="8" Col="15" Value="111" />
+      <Position Row="9" Col="15" Value="112" />
+      <Position Row="10" Col="15" Value="113" />
+      <Position Row="11" Col="15" Value="114" />
+    </EndYear>
+    <!--月-->
+    <EndMonth>
+      <Position Row="0" Col="16" Value="1" />
+      <Position Row="1" Col="16" Value="2" />
+      <Position Row="2" Col="16" Value="3" />
+      <Position Row="3" Col="16" Value="4" />
+      <Position Row="4" Col="16" Value="5" />
+      <Position Row="5" Col="16" Value="6" />
+      <Position Row="6" Col="16" Value="7" />
+      <Position Row="7" Col="16" Value="8" />
+      <Position Row="8" Col="16" Value="8" />
+      <Position Row="9" Col="16" Value="10" />
+      <Position Row="10" Col="16" Value="11" />
+      <Position Row="11" Col="16" Value="12" />
+    </EndMonth>
+    <!--日-->
+    <EndDay>
+      <Position Row="0" Col="17" Value="1" />
+      <Position Row="1" Col="17" Value="2" />
+      <Position Row="2" Col="17" Value="3" />
+      <Position Row="3" Col="17" Value="4" />
+      <Position Row="4" Col="17" Value="5" />
+      <Position Row="5" Col="17" Value="6" />
+      <Position Row="6" Col="17" Value="7" />
+      <Position Row="7" Col="17" Value="8" />
+      <Position Row="8" Col="17" Value="9" />
+      <Position Row="9" Col="17" Value="10" />
+
+      <Position Row="0" Col="18" Value="11" />
+      <Position Row="1" Col="18" Value="12" />
+      <Position Row="2" Col="18" Value="13" />
+      <Position Row="3" Col="18" Value="14" />
+      <Position Row="4" Col="18" Value="15" />
+      <Position Row="5" Col="18" Value="16" />
+      <Position Row="6" Col="18" Value="17" />
+      <Position Row="7" Col="18" Value="18" />
+      <Position Row="8" Col="18" Value="19" />
+      <Position Row="9" Col="18" Value="20" />
+
+      <Position Row="0" Col="19" Value="21" />
+      <Position Row="1" Col="19" Value="22" />
+      <Position Row="2" Col="19" Value="23" />
+      <Position Row="3" Col="19" Value="24" />
+      <Position Row="4" Col="19" Value="25" />
+      <Position Row="5" Col="19" Value="26" />
+      <Position Row="6" Col="19" Value="27" />
+      <Position Row="7" Col="19" Value="28" />
+      <Position Row="8" Col="19" Value="29" />
+      <Position Row="9" Col="19" Value="30" />
+      <Position Row="10" Col="19" Value="31" />
+    </EndDay>
+    <!--節-->
+    <EndPeriod>
+      <Position Row="0" Col="20" Value="早修" />
+      <Position Row="1" Col="20" Value="升旗" />
+      <Position Row="2" Col="20" Value="一" />
+      <Position Row="3" Col="20" Value="二" />
+      <Position Row="4" Col="20" Value="三" />
+      <Position Row="5" Col="20" Value="四" />
+      <Position Row="6" Col="20" Value="午休" />
+      <Position Row="7" Col="20" Value="五" />
+      <Position Row="8" Col="20" Value="六" />
+      <Position Row="9" Col="20" Value="七" />
+      <Position Row="10" Col="20" Value="八" />
+    </EndPeriod>
+  </AbsenceDate>
+
+</LeaveCardSetting>

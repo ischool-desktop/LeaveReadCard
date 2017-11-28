@@ -168,6 +168,9 @@
   <ItemGroup>
     <Content Include="ReadMe\Example.png" />
     <Content Include="ReadMe\初次使用請看我.txt" />
+    <Content Include="Resources\LeaveCardSetting.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="LeaveExampleData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -79,7 +79,7 @@
             this.dgvClassMap.RowHeadersWidth = 25;
             this.dgvClassMap.RowTemplate.Height = 24;
             this.dgvClassMap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvClassMap.Size = new System.Drawing.Size(253, 316);
+            this.dgvClassMap.Size = new System.Drawing.Size(292, 316);
             this.dgvClassMap.TabIndex = 1;
             this.dgvClassMap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClassMap_CellClick);
             this.dgvClassMap.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvClassMap_KeyUp);
@@ -133,10 +133,9 @@
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(388, 393);
+            this.btnSave.Location = new System.Drawing.Point(145, 394);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -147,10 +146,9 @@
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(472, 393);
+            this.btnClose.Location = new System.Drawing.Point(229, 394);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -230,7 +228,7 @@
             this.dgvLeaveMap.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLeaveMap.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvLeaveMap.HighlightSelectedColumnHeaders = false;
-            this.dgvLeaveMap.Location = new System.Drawing.Point(285, 38);
+            this.dgvLeaveMap.Location = new System.Drawing.Point(475, 38);
             this.dgvLeaveMap.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLeaveMap.Name = "dgvLeaveMap";
             this.dgvLeaveMap.RowHeadersWidth = 25;
@@ -271,7 +269,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(285, 12);
+            this.labelX7.Location = new System.Drawing.Point(482, 12);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(104, 21);
             this.labelX7.TabIndex = 15;
@@ -286,7 +284,7 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(285, 365);
+            this.labelX8.Location = new System.Drawing.Point(650, 365);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(87, 21);
             this.labelX8.TabIndex = 17;
@@ -298,7 +296,7 @@
             this.cboReadingCardStartYear.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboReadingCardStartYear.FormattingEnabled = true;
             this.cboReadingCardStartYear.ItemHeight = 19;
-            this.cboReadingCardStartYear.Location = new System.Drawing.Point(285, 390);
+            this.cboReadingCardStartYear.Location = new System.Drawing.Point(650, 390);
             this.cboReadingCardStartYear.Name = "cboReadingCardStartYear";
             this.cboReadingCardStartYear.Size = new System.Drawing.Size(88, 25);
             this.cboReadingCardStartYear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -308,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 427);
+            this.ClientSize = new System.Drawing.Size(320, 427);
             this.Controls.Add(this.cboReadingCardStartYear);
             this.Controls.Add(this.labelX8);
             this.Controls.Add(this.dgvLeaveMap);
@@ -323,8 +321,8 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(578, 466);
-            this.MinimumSize = new System.Drawing.Size(578, 466);
+            this.MaximumSize = new System.Drawing.Size(336, 466);
+            this.MinimumSize = new System.Drawing.Size(336, 466);
             this.Name = "SetupForm";
             this.Text = "學生出缺席讀卡設定";
             this.Load += new System.EventHandler(this.SetupForm_Load);

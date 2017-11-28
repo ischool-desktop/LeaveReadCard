@@ -19,7 +19,7 @@ namespace LeaveReadCard.Properties {
     // 類別透過 ResGen 或 Visual Studio 這類工具。
     // 若要加入或移除成員，請編輯您的 .ResX 檔，然後重新執行 ResGen
     // (利用 /str 選項)，或重建您的 VS 專案。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,32 @@ namespace LeaveReadCard.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;!--2017/11/27 羿均 --&gt;
+        ///&lt;LeaveCardSetting&gt;
+        ///  &lt;Paper&gt;
+        ///    &lt;TotalRow&gt;12&lt;/TotalRow&gt;
+        ///    &lt;TotalColumn&gt;32&lt;/TotalColumn&gt;
+        ///  &lt;/Paper&gt;
+        ///
+        ///  &lt;!--學號--&gt;
+        ///  &lt;StudentNumber&gt;
+        ///    &lt;!--學號第一碼--&gt;
+        ///    &lt;Position Row=&quot;0&quot; Col=&quot;0&quot; Value=&quot;0&quot; /&gt;
+        ///    &lt;Position Row=&quot;1&quot; Col=&quot;0&quot; Value=&quot;1&quot; /&gt;
+        ///    &lt;Position Row=&quot;2&quot; Col=&quot;0&quot; Value=&quot;2&quot; /&gt;
+        ///    &lt;Position Row=&quot;3&quot; Col=&quot;0&quot; Value=&quot;3&quot; /&gt;
+        ///    &lt;Position Row=&quot;4&quot; Col=&quot;0&quot; Value=&quot;4&quot; /&gt;
+        ///    &lt;Position Row=&quot;5&quot; Col=&quot;0&quot; Value=&quot;5&quot; /&gt;
+        ///    &lt;Position Row=&quot;6&quot; Col [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
+        /// </summary>
+        internal static string LeaveCardSetting {
+            get {
+                return ResourceManager.GetString("LeaveCardSetting", resourceCulture);
             }
         }
         

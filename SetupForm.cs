@@ -80,7 +80,8 @@ namespace LeaveReadCard
 				foreach (string leave in leaves)
 				{
 					DataGridViewRow row = new DataGridViewRow();
-					row.CreateCells(dgvLeaveMap, leave, Config[leave]);
+                    //row.CreateCells(dgvLeaveMap, leave, Config[leave]);
+                    row.CreateCells(dgvLeaveMap, leave, leave);
 					dgvLeaveMap.Rows.Add(row);
 				}
 

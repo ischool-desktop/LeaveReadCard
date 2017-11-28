@@ -50,15 +50,19 @@ namespace LeaveReadCard
                 foreach (string period in Program.PeriodNameList)
                 {
                     DataGridViewColumn dgvcolumn = dgvAttendance.Columns["p" + i];
-
-                    if (!Setup.PeriodMapping.ContainsKey(period))
-                        dgvcolumn.Visible = false;
-                    else
-                    {
-                        dgvcolumn.Visible = true;
-                        dgvcolumn.HeaderText = Setup.PeriodMapping[period];
-                        dgvcolumn.Tag = "Period";
-                    }
+                    // 2017/11/27 羿均修改直接讀取xml節次設定
+                    dgvcolumn.Visible = true;
+                    dgvcolumn.HeaderText = period;
+                    dgvcolumn.Tag = "Period";
+                    //if (!Setup.PeriodMapping.ContainsKey(period))
+                    //    dgvcolumn.Visible = false;
+                    //else
+                    //{
+                        //dgvcolumn.Visible = true;
+                        //dgvcolumn.HeaderText = Setup.PeriodMapping[period];
+                        //dgvcolumn.HeaderText = period;
+                        //dgvcolumn.Tag = "Period";
+                    //}
 
                     i++;
                 }

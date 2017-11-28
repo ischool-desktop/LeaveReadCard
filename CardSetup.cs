@@ -42,9 +42,7 @@ namespace LeaveReadCard
                 //    throw new Exception("讀卡設定缺少設定「缺」的對應缺曠類別。");
 
 
-
-
-                //節次對照表。
+                //節次對照表。2017/11/28 羿均 修改對照表，讀取xml的設定
                 PeriodMapping = new Dictionary<string, string>();
                 PeriodIndex = new Dictionary<string, int>();
 
@@ -56,15 +54,17 @@ namespace LeaveReadCard
                     if (PeriodMapping.ContainsKey(period))
                         throw new Exception("節次對照設定有重覆！");
 
-                    if (string.IsNullOrWhiteSpace(cd[period]))
-                        continue;
+                    PeriodMapping.Add(period, period);
+                    PeriodIndex.Add(period, index);
 
-                    PeriodMapping.Add(period, cd[period]);
-                    PeriodIndex.Add(cd[period], index);
+                    //if (string.IsNullOrWhiteSpace(cd[period]))
+                    //    continue;
+                    //PeriodMapping.Add(period, cd[period]);
+                    //PeriodIndex.Add(cd[period], index);
                 }
 
-				//	假別對照表
-				AbsenceTypeMapping = new Dictionary<string, string>();
+                //	假別對照表。2017/11/28 羿均 修改對照表，讀取xml的設定
+                AbsenceTypeMapping = new Dictionary<string, string>();
 				index = -1;
 				foreach (string type in Program.LeaveNameList)
 				{
@@ -73,11 +73,12 @@ namespace LeaveReadCard
 					if (AbsenceTypeMapping.ContainsKey(type))
 						throw new Exception("節次對照設定有重覆！");
 
-					if (string.IsNullOrWhiteSpace(cd[type]))
-						continue;
+					//if (string.IsNullOrWhiteSpace(cd[type]))
+					//	continue;
 
-					AbsenceTypeMapping.Add(type, cd[type]);
-				}
+                    AbsenceTypeMapping.Add(type, type);
+                    //AbsenceTypeMapping.Add(type, cd[type]);
+                }
 
                 //讀取班級對照表。
                 XmlElement xmlclassmap = cd.GetXml("ClassNameMap", null);

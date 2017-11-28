@@ -5,6 +5,7 @@ using System.Text;
 using FISCA;
 using FISCA.Presentation;
 using FISCA.Permission;
+using System.Xml.Linq;
 
 namespace LeaveReadCard
 {
@@ -39,22 +40,33 @@ namespace LeaveReadCard
             Catalog catalog = RoleAclSource.Instance["學務作業"]["功能按鈕"];
             catalog.Add(new RibbonFeature(SetupFormCoode, "請假讀卡設定"));
             catalog.Add(new RibbonFeature(ReadCardFormCode, "請假讀卡"));
+
+
+            InitCardSettingData();
         }
+
+        // 2017/11/27，羿均，修改節次與假別的設定，動態讀取xml上所做的設定，讓讀卡模組更有彈性。
 
         /// <summary>
         /// 卡片上所提供的節次列表。
         /// </summary>
-        public static string[] PeriodNameList = new string[] { "早修/升旗", 
-                    "第一節", "第二節", "第三節", "第四節", "午休",
-                    "第五節", "第六節", "第七節", "第八節", "第九節"};
+        public static string[] PeriodNameList = new string[] { };
 
         /// <summary>
         /// 卡片上所提供的假別列表。
         /// </summary>
-        public static string[] LeaveNameList = new string[] { "事", 
-                    "病", "喪", "公"};
+        public static string[] LeaveNameList = new string[] { };
 
+        public static void InitCardSettingData()
+        {
+            XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+            XElement period = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("StarPeriod");
+            XElement absenceType = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceType");
 
+            PeriodNameList = period.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
+
+            LeaveNameList = absenceType.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
+        }
 
 
         //2016/9/2 穎驊紀錄，下面這項不會再被用到，因為每張卡片每年都有可能會改起始年度，
