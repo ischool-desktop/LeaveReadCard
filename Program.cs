@@ -6,6 +6,7 @@ using FISCA;
 using FISCA.Presentation;
 using FISCA.Permission;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace LeaveReadCard
 {
@@ -16,21 +17,24 @@ namespace LeaveReadCard
         public const string ReadCardFormCode = "請假讀卡模組.請假讀卡";
 
         [MainMethod()]
+        // 2017/11/30 羿均，修改按鈕註冊位置
         public static void Main()
         {
             RibbonBarItemManager ribbon = FISCA.Presentation.MotherForm.RibbonBarItems;
 
-            ribbon["學務作業", "請假讀卡"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
+            ribbon["學務作業", "讀卡系統"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
 
-            MenuButton button = ribbon["學務作業", "請假讀卡"]["設定"]["讀卡設定"];
+            MenuButton button = ribbon["學務作業", "讀卡系統"]["設定"]["請假讀卡設定"];
             button.Enable = UserAcl.Current[SetupFormCoode].Executable;
             button.Click += delegate
             {
                 new SetupForm().ShowDialog();
             };
 
-            button = ribbon["學務作業", "請假讀卡"]["讀卡"];
-            button.Image = Properties.Resources.ReadCard;
+            ribbon["學務作業", "讀卡系統"]["讀卡"].Image = Properties.Resources.ReadCard;
+
+            button = ribbon["學務作業", "讀卡系統"]["讀卡"]["請假卡"];
+            //button.Image = Properties.Resources.ReadCard;
             button.Enable = UserAcl.Current[ReadCardFormCode].Executable;
             button.Click += delegate
             {
@@ -59,19 +63,27 @@ namespace LeaveReadCard
 
         public static void InitCardSettingData()
         {
-            // 2017/11/29，羿均，新增LeaveCardSetting欄位在list Tabel，再透過中央管理系統update 讀卡解析設定xml
-            K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
-            _LeaveCardSetting.Save();
+            try
+            {
+                // 2017/11/29，羿均，新增LeaveCardSetting欄位在list Tabel，再透過中央管理系統update 讀卡解析設定xml
+                K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
+                _LeaveCardSetting.Save();
 
-            // 取得卡片解析設定
-            XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
-            //XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
-            XElement period = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("StarPeriod");
-            XElement absenceType = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceType");
+                // 取得卡片解析設定
+                XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
+                //XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+                XElement period = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("StarPeriod");
+                XElement absenceType = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceType");
 
-            PeriodNameList = period.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
+                PeriodNameList = period.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
 
-            LeaveNameList = absenceType.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
+                LeaveNameList = absenceType.Descendants("Position").Select(element => element.Attribute("Value").Value).ToArray();
+            }
+            catch
+            {
+                MessageBox.Show("讀卡解析資料未設定，請聯絡澔學客服人員!");
+            }
+            
         }
 
 
