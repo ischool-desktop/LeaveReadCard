@@ -37,11 +37,11 @@ namespace LeaveReadCard
 				Parser = new ParserDelegate(WVSOMRParser.Instance.LeaveParser);
 				Transformer = new TransformDelegate(CardSetup.TransformLeaveCardData);
 			}
-			if (this.Type == CardType.點名卡)
-			{ 
-				Parser = new ParserDelegate(WVSOMRParser.Instance.Parser);
-				Transformer = new TransformDelegate(CardSetup.TransformAbsenceCardData);
-			}
+			//if (this.Type == CardType.點名卡)
+			//{ 
+			//	Parser = new ParserDelegate(WVSOMRParser.Instance.Parser);
+			//	Transformer = new TransformDelegate(CardSetup.TransformAbsenceCardData);
+			//}
         }
 
         private void CardReadingForm_Load(object sender, EventArgs e)

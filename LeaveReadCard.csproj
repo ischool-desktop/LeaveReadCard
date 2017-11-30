@@ -143,6 +143,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ReadCardForm.resx">
       <DependentUpon>ReadCardForm.cs</DependentUpon>
@@ -168,9 +169,6 @@
   <ItemGroup>
     <Content Include="ReadMe\Example.png" />
     <Content Include="ReadMe\初次使用請看我.txt" />
-    <Content Include="Resources\LeaveCardSetting.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="LeaveExampleData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

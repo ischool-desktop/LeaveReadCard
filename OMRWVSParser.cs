@@ -9,291 +9,11 @@ using Campus.Configuration;
 namespace LeaveReadCard
 {
     /// <summary>
-    /// 世界高中缺席記錄卡資料解析。
+    /// 請假卡資料解析。
     /// </summary>
     public class WVSOMRParser
     {
-       
-		//	解析「年級」之畫記
-		private sealed class GradeYearParser : Decorator
-		{
-			private readonly IEnumerable<int> Position = Enumerable.Range(4, 3);
-            
-			public override bool Validate()
-			{
-				int mark_count = 0;
-				int mark_no = 1;
-				for (int i = 0; i < this.Position.Count(); i++)
-				{
-					if (this.Source.ElementAt(this.Position.ElementAt(i)) >= this.Level)
-					{
-						mark_count += 1;
-						mark_no += i;
-					}
-				}
-				if (mark_count != 1)
-				{
-					this.Message.Element("Failure").Add(new XElement("Message", "「年級」畫記錯誤。"));
-
-					return false & base.Validate();
-				}
-				else
-				{
-					this.Message.Element("Success").Add(new XElement("GradeYear", mark_no));
-
-					return base.Validate();
-				}
-			}
-		}
-		//	解析「班級」之畫記
-		private sealed class ClassParser : Decorator
-		{
-			//	班級之畫記的絕對位置：4列10行
-			private readonly List<IEnumerable<int>> Position = new List<IEnumerable<int>> { 
-				Enumerable.Range(38, 10), 
-				Enumerable.Range(38 + 1*35, 10),
-				Enumerable.Range(38 + 2*35, 10),
-				Enumerable.Range(38 + 3*35, 10) };
-
-			public override bool Validate()
-			{
-				List<int> mark_count = Enumerable.Repeat(0, 4).ToList();
-				List<int> mark_no = Enumerable.Repeat(0, 4).ToList();
-				for (int j = 0; j < 4; j++)
-				{
-					for (int i = 0; i < this.Position.ElementAt(j).Count(); i++)
-					{
-						if (this.Source.ElementAt(this.Position.ElementAt(j).ElementAt(i)) >= this.Level)
-						{
-							mark_count[j] += 1;
-							mark_no[j] = i;
-						}
-					}
-				}
-				if (mark_count.ToList().Where(x=>x==1).Count() == 4)
-				{
-					this.Message.Element("Success").Add(new XElement("Class", string.Join("", mark_no)));
-
-					return base.Validate();
-				}
-				else
-				{
-					this.Message.Element("Failure").Add(new XElement("Message", "「班級」畫記錯誤。"));
-
-					return false & base.Validate();
-				}
-			}
-		}
-		
-		//	解析「點名日期--年」之畫記
-		private sealed class YearParser : Decorator
-		{
-            //2016/8/31  穎驊 新增動態依據讀卡上的起始年，使用者可以調整設定
-            //ConfigData Config { get; set; }
-            
-			private readonly IEnumerable<int> Position = Enumerable.Range(17, 12);
-			public override bool Validate()
-			{
-				int mark_count = 0;
-
-                //int mark_no = Program.StartYear;
-
-                //2016/8/31  穎驊 新增動態依據讀卡上的起始年，使用者可以調整設定，目前有104年、105年 可以在"設定"中改變
-                //Config = Campus.Configuration.Config.App["學生出缺席讀卡設定"];
-
-                //int mark_no = int.Parse(Config["讀卡起始年--請假卡"]);
-                int mark_no = 103;
-
-				for (int i = 0; i < this.Position.Count(); i++)
-				{
-					if (this.Source.ElementAt(this.Position.ElementAt(i)) >= this.Level)
-					{
-						mark_count += 1;
-						mark_no += i;
-                        
-					}
-				}
-				if (mark_count != 1)
-				{
-					this.Message.Element("Failure").Add(new XElement("Message", "「點名日期--年」畫記錯誤。"));
-
-					return false & base.Validate();
-				}
-				else
-				{
-					this.Message.Element("Success").Add(new XElement("Year", mark_no));
-
-					return base.Validate();
-				}
-			}
-		}
-
-		//	解析「點名日期--月」之畫記
-		private sealed class MonthParser : Decorator
-		{
-			private readonly IEnumerable<int> Position = Enumerable.Range(52, 12);
-			public override bool Validate()
-			{
-				int mark_count = 0;
-				int mark_no = 1;
-				for (int i = 0; i < this.Position.Count(); i++)
-				{
-					if (this.Source.ElementAt(this.Position.ElementAt(i)) >= this.Level)
-					{
-						mark_count += 1;
-						mark_no += i;
-					}
-				}
-				if (mark_count != 1)
-				{
-					this.Message.Element("Failure").Add(new XElement("Message", "「點名日期--月」畫記錯誤。"));
-
-					return false & base.Validate();
-				}
-				else
-				{
-					this.Message.Element("Success").Add(new XElement("Month", mark_no));
-
-					return base.Validate();
-				}
-			}
-		}
-
-		//	解析「點名日期--日」之畫記
-		private sealed class DayParser : Decorator
-		{
-			private readonly IEnumerable<int> Position = Enumerable.Range(122, 10).Union(Enumerable.Range(122 + 1 * 35, 10).Union(Enumerable.Range(122 + 2 * 35, 11)));
-
-			public override bool Validate()
-			{
-				int mark_count = 0;
-				int mark_no = 1;
-				for (int j = 0; j < this.Position.Count(); j++)
-				{
-					if (this.Source.ElementAt(this.Position.ElementAt(j)) >= this.Level)
-					{
-						mark_count += 1;
-						mark_no += j;
-					}
-				}
-				if (mark_count == 1)
-				{
-					this.Message.Element("Success").Add(new XElement("Day", string.Join("", mark_no)));
-
-					return base.Validate();
-				}
-				else
-				{
-					this.Message.Element("Failure").Add(new XElement("Message", "「點名日期--日」畫記錯誤。"));
-
-					return false & base.Validate();
-				}
-			}
-		}
-
-		//	解析「遲到早退/曠課」之畫記		
-		//<Discipline SeatNo="1">
-		//	<Period Name="第一節">
-		//		<Reason>遲</Reason>
-		//		<Reason>缺</Reason>
-		//	</Period>
-		//</Discipline>
-		private sealed class AttendanceParser : Decorator
-		{
-
-            ConfigData Config { get; set; }
-
-			//private readonly string[] PeriodMappings = new string[] { "早修/升旗", "第一節", "第二節", "第三節", "第四節", "午休", "第五節", "第六節", "第七節", "第八節" }; 
-			public override bool Validate()
-			{
-                //2016/9/1 穎驊筆記，就學生缺曠資料其起始點為35*6 +2 = 212
-				int start = 212;
-				int position = 0;
-
-                //2016/9/1 穎驊筆記，支援最多可以掃60行
-				for(int i=0; i<60; i++)
-				{
-					XElement Discipline = new XElement("Discipline", new XAttribute("SeatNo", i + 1));
-					this.Message.Element("Success").Add(Discipline);
-					position = start + 35*i;
-
-					for (int j = 0; j <= 10; j++)
-					{
-						int count = 0;
-						for (int k = 0; k < 3; k++)
-						{
-							position += 1;
-							if (k == 2)
-								continue;
-
-                            ////2016/9/1 穎驊筆記，終於看懂讀卡機他的邏輯，在整張紙上會有35*60的讀取點，每一個讀取點機器會偵測畫卡的濃淡並賦予值
-                            //比如說第213格有畫卡濃度4，就會有[213,4]的陣列出現，接下來就要比較我們設定的畫卡濃度閾值，畫到有多濃 (>= this.Level)才算是有效訊號，
-
-
-                            //if (this.Source.ElementAt(position) >= this.Level)
-                            //    count++;
-                            
-                            //2016/9/1 穎驊註解，由於恩正說要另外支援畫卡假別的種類，
-                            //原本畫卡的訊號是兩洞一組，1_0為遲到早退，1_1為曠課
-                            //恩正說，1_0、1_1 不再綁定價別，也因此每一節次的1_0、1_1可以有各自的意義，且要再支援0_1的畫卡格式
-                            //所以不再可以用單純數數量的方式來做
-
-                            if (this.Source.ElementAt(position) >= this.Level) 
-                            {
-                                //第一個洞有數到 >> +1
-                                if (k == 0) 
-                                {
-                                    count += 1;                                
-                                }
-
-                                //第二個洞有數到 >> +2
-                                if (k == 1) 
-                                {
-                                    count += 2;                                
-                                }                                                        
-                            }                               
-						}
-
-						XElement Period = new XElement("Period", new XAttribute("Name", Program.PeriodNameList[j]));
-						Discipline.Add(Period);
-
-                        //列出卡片上所有可設定節次。
-                        string[] periods = Program.PeriodNameList;
-                        
-                        //下面是舊的Code 單純數數量
-
-                        //if (count == 1)
-                        //{
-                        //    Period.Add(new XElement("Reason", "遲"));
-                        //}
-                        //if (count == 2)
-                        //{
-                        //    Period.Add(new XElement("Reason", "缺"));
-                        //}
-
-                        Config = Campus.Configuration.Config.App["學生出缺席讀卡設定"];
-
-                        //只畫第一洞
-                        if (count == 1)
-                        {
-                            Period.Add(new XElement("Reason", Config[Program.PeriodNameList[j] + "leave_1_0"]));
-                        }
-                        //只畫第二洞
-                        if (count == 2)
-                        {
-                            Period.Add(new XElement("Reason", Config[Program.PeriodNameList[j] + "leave_0_1"]));
-                        }
-                        //一洞+二洞都有畫
-                        if (count == 3)
-                        {
-                            Period.Add(new XElement("Reason", Config[Program.PeriodNameList[j]+"leave_1_1"]));
-                        }
-					}
-				}
-				return true & base.Validate();
-			}
-		}
-		
+        // 2017/11/30 羿均 將出勤點名卡的程式碼刪除。讓點名讀卡、請假讀卡拆解成兩個獨立的模組。
 		private sealed class LeaveStudentNumberParser : Decorator
 		{
             //	請假卡「學號」之畫記的絕對位置：10列6行
@@ -312,7 +32,10 @@ namespace LeaveReadCard
             //	}
             //}
 
-            static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+            //2017/11/29 羿均 修改 已將讀卡解析設定儲存到list table，透過config讀取設定
+            static K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
+            static XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
+            //static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
             List<XElement> studentNumberPositionList = LeaveCardSetting.Element("LeaveCardSetting").Element("StudentNumber").Elements("Position").ToList();
 
 			public override bool Validate()
@@ -367,7 +90,11 @@ namespace LeaveReadCard
             //	請假卡「假別」之畫記的絕對位置
             //private readonly List<int> Position = new List<int> { 7, 77, 147, 217, 287 };
 
-            static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+            //2017/11/29 羿均 修改 已將讀卡解析設定儲存到list table，透過config讀取設定
+            static K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
+            static XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
+
+            //static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
             List<XElement> absenceTypePositionList = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceType").Elements("Position").ToList();
 
             public override bool Validate()
@@ -412,12 +139,14 @@ namespace LeaveReadCard
 			}
 		}
 
-        // 2017/11/28 羿均 ，註解掉舊有的絕對位置以及Config設定，以xml的設定代替，讓未來讀卡更有彈性。
-
         private sealed class LeaveRangeParser : Decorator
         {
+            //2017/11/29 羿均 修改 已將讀卡解析設定儲存到list table，透過config讀取設定
+            static K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
+            static XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
+
             // 2017/11/27，羿均，讀取xml起始年設定
-            static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+            //static XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
             static XElement starYear = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("StarYear").Elements("Position").First();
             int _starYear = int.Parse(starYear.Attribute("Value").Value);
 
@@ -465,9 +194,6 @@ namespace LeaveReadCard
             //	請假卡「請假日期--節(至)」之畫記的絕對位置
             List<XElement> endPeriodPositionList = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("EndPeriod").Elements("Position").ToList();
 			//private readonly List<int> EndPeriodPosition = new List<int> { 20, 55, 90, 125, 160, 195, 230, 265, 300, 335, 370, 405 };
-
-			//	節次對照。2017/11/28 羿均修改
-            private readonly string[] PeriodMappings = new string[] { "早修", "升旗", "一", "二", "三", "四", "午休", "五", "六", "七", "八", "九" }; 
 
 			public override bool Validate()
 			{
@@ -733,22 +459,6 @@ namespace LeaveReadCard
 				{
 					DateTime begin_date = DateTime.Now;
 					DateTime end_date = DateTime.Now;
-					//<OMRReadResult>
-					//	<AttendanceData>
-					//		<ClassName>304</ClassName>
-					//		<DateTime>2012/8/15</DateTime>		<--	請假卡不參考
-					//		<Attendance SeatNo="7">
-					//			<Period Name="三" Reason="曠課"/>
-					//			<Period Name="五" Reason="曠課"/>
-					//		</Attendance>
-					//	</AttendanceData>
-					//</OMRReadResult>
-					//	下列格式會轉換為上開格式
-					//<Discipline SeatNo="1" DateTime="2012/8/15">
-					//	<Period Name="第一節">
-					//		<Reason>假</Reason>		<--	取消
-					//	</Period>
-					//</Discipline>
 
 					if (DateTime.TryParse(string.Format("{0}/{1}/{2}", begin_year_mark_no + 1911, begin_month_mark_no, begin_day_mark_no), out begin_date))
 					{
@@ -824,55 +534,6 @@ namespace LeaveReadCard
 
 			return Element;
 		}
-        
-        /// <summary>
-        /// 解析出勤卡片資料。
-        /// </summary>
-        /// <param name="source">資料來源</param>
-        /// <param name="level">畫卡濃度,預設為3。</param>
-        /// <returns></returns>
-		public XElement Parser(byte[] source, int level, int source_length)
-        {
-			if (source.Length != source_length)
-				throw new ArgumentException("卡片格式不正確，請確認卡片為「出勤點名卡」。");
-
-			iParser Parser = new ConcreteParser();
-			//	年級
-			Decorator Decorator = new GradeYearParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-			//	班級
-			Decorator = new ClassParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-			//	點名日期--年
-			Decorator = new YearParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-			//	點名日期--月
-			Decorator = new MonthParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-			//	點名日期--日
-			Decorator = new DayParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-			//	遲到早退/曠課
-			Decorator = new AttendanceParser();
-			Decorator.SetParser(Parser);
-			Decorator.SetParams(source, level);
-			Parser = Decorator;
-
-			bool result1 = Parser.Validate();
-			XElement Element = Parser.GetMessage();
-
-			return Element;
-        }
 
 		//<Failure>
 		//	<Message>「點名日期--日」畫記錯誤。</Message>

@@ -32,16 +32,6 @@ namespace LeaveReadCard
                 else
                     OverrideData = false; //預設是這個選項。
 
-
-                //2016/9/2 穎驊註解，不再使用遲、缺
-
-                //if (string.IsNullOrWhiteSpace(LateString))
-                //    throw new Exception("讀卡設定缺少設定「遲」的對應缺曠類別。");
-
-                //if (string.IsNullOrWhiteSpace(AbsenceString))
-                //    throw new Exception("讀卡設定缺少設定「缺」的對應缺曠類別。");
-
-
                 //節次對照表。2017/11/28 羿均 修改對照表，讀取xml的設定
                 PeriodMapping = new Dictionary<string, string>();
                 PeriodIndex = new Dictionary<string, int>();
@@ -131,23 +121,6 @@ namespace LeaveReadCard
         /// </summary>
         public Dictionary<string, int> PeriodIndex { get; private set; }
 
-
-
-        //2016/9/2 穎驊註解，不再使用遲、缺
-
-        ///// <summary>
-        ///// 卡片上的「遲」的對應字串。
-        ///// </summary>
-        //public string LateString { get; private set; }
-
-        ///// <summary>
-        ///// 卡片上的「缺」對應字串。
-        ///// </summary>
-        //public string AbsenceString { get; private set; }
-
-
-
-
         /// <summary>
         /// 是否覆蓋現有資料。
         /// </summary>
@@ -203,7 +176,7 @@ namespace LeaveReadCard
 					if (string.IsNullOrWhiteSpace(periodTitle)) //沒設定就讀不到。
 						continue;
 
-					newperiod.SetAttributeValue("Name", periodTitle);	//
+					newperiod.SetAttributeValue("Name", periodTitle);
 
 
                     //XElement reason = period.XPathSelectElement("Reason[.='缺']");
@@ -236,24 +209,6 @@ namespace LeaveReadCard
             return result;
         }
 		
-		/// <summary>
-		/// 依據設定轉換請假卡上的資料。
-		/// </summary>
-		/// <param name="xCardData"></param>
-		/// <returns></returns>
-		/// <example>
-		/// <Messages>
-			//<Success>
-			//  <Discipline DateTime="2014/10/3">
-			//	<Period Name="第一節" />
-			//	<Period Name="第五節" />
-			//  </Discipline>
-			//  <AttendanceType>早修/升旗</AttendanceType>
-			//  <StudentNumber>714068</StudentNumber>
-			//</Success>
-		//	  <Failure />
-		//	</Messages>
-		/// </example>
 		public XElement TransformLeaveCardData(XElement xCardData)
 		{
 			XElement source = xCardData;

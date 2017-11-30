@@ -59,7 +59,13 @@ namespace LeaveReadCard
 
         public static void InitCardSettingData()
         {
-            XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
+            // 2017/11/29，羿均，新增LeaveCardSetting欄位在list Tabel，再透過中央管理系統update 讀卡解析設定xml
+            K12.Data.Configuration.ConfigData _LeaveCardSetting = K12.Data.School.Configuration["LeaveCardSetting"];
+            _LeaveCardSetting.Save();
+
+            // 取得卡片解析設定
+            XDocument LeaveCardSetting = XDocument.Parse(_LeaveCardSetting.PreviousData.InnerXml);
+            //XDocument LeaveCardSetting = XDocument.Parse(LeaveReadCard.Properties.Resources.LeaveCardSetting);
             XElement period = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceDate").Element("StarPeriod");
             XElement absenceType = LeaveCardSetting.Element("LeaveCardSetting").Element("AbsenceType");
 
