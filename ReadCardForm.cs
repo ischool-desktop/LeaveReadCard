@@ -347,188 +347,194 @@ namespace LeaveReadCard
 
 		private void btnLeave_Click(object sender, EventArgs e)
 		{
+			//try
+			//{
+			//	this.CardType = CardType.請假卡;
+			//	Setup = new CardSetup();
 
+			//	CardReadingForm crf = new CardReadingForm(Setup, CardType.請假卡,intValue.Value);
+			//	crf.ShowDialog();
 
-			try
-			{
-				this.CardType = CardType.請假卡;
-				Setup = new CardSetup();
+			//	Clipboard.SetText(crf.XmlResult.ToString());
 
-				CardReadingForm crf = new CardReadingForm(Setup, CardType.請假卡,intValue.Value);
-				crf.ShowDialog();
+			//	XElement srcdata = crf.XmlResult;
 
-				Clipboard.SetText(crf.XmlResult.ToString());
+			//	//XElement srcdata = XElement.Load("LeaveExampleData.xml");
+			//	//<AttendanceData>
+			//	//<StudentNumber>714068</StudentNumber>
+			//	//<AttendanceType>事</AttendanceType>
+			//	//<Attendance DateTime="2014/10/1">
+			//	//	<Period Name="一" />
+			//	//</Attendance>
+			//	//<Attendance DateTime="2014/10/3">
+			//	//	<Period Name="五" />
+			//	//</Attendance>
+			//	//</AttendanceData>
 
-				XElement srcdata = crf.XmlResult;
+			//	foreach (XElement attData in srcdata.Elements("AttendanceData"))
+			//	{
+			//		string studentNumber = attData.ElementText("StudentNumber");
+			//		string attendanceType = attData.ElementText("AttendanceType");
+			//		string type = Setup.AbsenceTypeMapping.ContainsKey(attendanceType) ? Setup.AbsenceTypeMapping[attendanceType] : string.Empty;
+			//		//attData.Element("AttendanceType").SetValue(type);
+			//		foreach (XElement attAttendance in attData.Descendants("Attendance"))
+			//		{
+			//			string dateTime = attAttendance.AttributeText("DateTime");
 
-				//XElement srcdata = XElement.Load("LeaveExampleData.xml");
-				//<AttendanceData>
-				//<StudentNumber>714068</StudentNumber>
-				//<AttendanceType>事</AttendanceType>
-				//<Attendance DateTime="2014/10/1">
-				//	<Period Name="一" />
-				//</Attendance>
-				//<Attendance DateTime="2014/10/3">
-				//	<Period Name="五" />
-				//</Attendance>
-				//</AttendanceData>
+			//			StudentNumberDateTime cdt = new StudentNumberDateTime(studentNumber, dateTime);
 
-				foreach (XElement attData in srcdata.Elements("AttendanceData"))
-				{
-					string studentNumber = attData.ElementText("StudentNumber");
-					string attendanceType = attData.ElementText("AttendanceType");
-					string type = Setup.AbsenceTypeMapping.ContainsKey(attendanceType) ? Setup.AbsenceTypeMapping[attendanceType] : string.Empty;
-					//attData.Element("AttendanceType").SetValue(type);
-					foreach (XElement attAttendance in attData.Descendants("Attendance"))
-					{
-						string dateTime = attAttendance.AttributeText("DateTime");
+			//			if (StudentNumberAttendances.ContainsKey(cdt))
+			//				StudentNumberAttendances.Remove(cdt);
 
-						StudentNumberDateTime cdt = new StudentNumberDateTime(studentNumber, dateTime);
+			//			StudentNumberAttendances.Add(cdt, new List<CardAttendance>());
 
-						if (StudentNumberAttendances.ContainsKey(cdt))
-							StudentNumberAttendances.Remove(cdt);
+			//			CardAttendance card_att = new CardAttendance(CardType.請假卡);
+			//			card_att.DateTime = dateTime;
+			//			//card_att.ClassName = "";	// FillStudentInfo 自動填入
+			//			//card_att.SeatNo = "";// FillStudentInfo 自動填入
+			//			card_att.XmlData = attData;
+			//			card_att.StudentNumber = studentNumber;
+			//			card_att.FillStudentInfo(StuFinder);
 
-						StudentNumberAttendances.Add(cdt, new List<CardAttendance>());
+			//			StudentNumberAttendances[cdt].Add(card_att);
 
-						CardAttendance card_att = new CardAttendance(CardType.請假卡);
-						card_att.DateTime = dateTime;
-						//card_att.ClassName = "";	// FillStudentInfo 自動填入
-						//card_att.SeatNo = "";// FillStudentInfo 自動填入
-						card_att.XmlData = attData;
-						card_att.StudentNumber = studentNumber;
-						card_att.FillStudentInfo(StuFinder);
+			//			foreach (XElement period in attAttendance.Descendants("Period"))
+			//			{
+			//				period.SetAttributeValue("Reason", type);
+			//				string pname = period.AttributeText("Name");
+			//				int index = Setup.PeriodIndex[pname];
 
-						StudentNumberAttendances[cdt].Add(card_att);
+			//				card_att.Periods[index] = type;
+			//			}
+			//		}
+			//	}
+			//	dgvAttendance.DataSource = StudentNumberAttendances.GetBindingList();
 
-						foreach (XElement period in attAttendance.Descendants("Period"))
-						{
-							period.SetAttributeValue("Reason", type);
-							string pname = period.AttributeText("Name");
-							int index = Setup.PeriodIndex[pname];
+			//	List<string> studentid_list = this.GroupStudentIdByStudentNumber();
+			//	//將資料庫中的缺曠記錄讀出來。
+			//	CurrentAttData = GetAttendanceInDB(studentid_list);
 
-							card_att.Periods[index] = type;
-						}
-					}
-				}
-				dgvAttendance.DataSource = StudentNumberAttendances.GetBindingList();
+			//	bool hasStudentNotFound = false;
+			//	foreach (DataGridViewRow row in dgvAttendance.Rows)
+			//	{
+			//		CardAttendance ca = row.DataBoundItem as CardAttendance;
 
-				List<string> studentid_list = this.GroupStudentIdByStudentNumber();
-				//將資料庫中的缺曠記錄讀出來。
-				CurrentAttData = GetAttendanceInDB(studentid_list);
+			//		if (ca.SRecord == null)
+			//		{
+			//			DataGridViewCellStyle style = row.DefaultCellStyle.Clone();
+			//			style.BackColor = Color.Red;
+			//			style.ForeColor = Color.Wheat;
+			//			row.DefaultCellStyle = style;
+			//			hasStudentNotFound = true;
+			//		}
+			//	}
 
-				bool hasStudentNotFound = false;
-				foreach (DataGridViewRow row in dgvAttendance.Rows)
-				{
-					CardAttendance ca = row.DataBoundItem as CardAttendance;
-
-					if (ca.SRecord == null)
-					{
-						DataGridViewCellStyle style = row.DefaultCellStyle.Clone();
-						style.BackColor = Color.Red;
-						style.ForeColor = Color.Wheat;
-						row.DefaultCellStyle = style;
-						hasStudentNotFound = true;
-					}
-				}
-
-				if (hasStudentNotFound)
-				{
-					MessageBox.Show("有部份學號找不到對應的學生，該資料將不被處理與儲存。\n\n(資料被標記為紅色)", "ischool");
-				}
-			}
-			catch (Exception ex)
-			{
-				RTOut.WriteError(ex);
-				MessageBox.Show(ex.Message);
-			}
+			//	if (hasStudentNotFound)
+			//	{
+			//		MessageBox.Show("有部份學號找不到對應的學生，該資料將不被處理與儲存。\n\n(資料被標記為紅色)", "ischool");
+			//	}
+			//}
+			//catch (Exception ex)
+			//{
+			//	RTOut.WriteError(ex);
+			//	MessageBox.Show(ex.Message);
+			//}
 		}
 
-		private void btnAbsence_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				this.CardType = CardType.點名卡;
-				Setup = new CardSetup();
+        private void StarReadCardbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.CardType = CardType.請假卡;
+                Setup = new CardSetup();
 
-                CardReadingForm crf = new CardReadingForm(Setup, CardType.點名卡, intValue.Value);
-				crf.ShowDialog();
+                CardReadingForm crf = new CardReadingForm(Setup, CardType.請假卡, intValue.Value);
+                crf.ShowDialog();
 
-				Clipboard.SetText(crf.XmlResult.ToString());
+                Clipboard.SetText(crf.XmlResult.ToString());
 
-				XElement srcdata = crf.XmlResult;
+                XElement srcdata = crf.XmlResult;
 
-				//XElement srcdata = XElement.Load("ExampleData.xml");
+                //XElement srcdata = XElement.Load("LeaveExampleData.xml");
+                //<AttendanceData>
+                //<StudentNumber>714068</StudentNumber>
+                //<AttendanceType>事</AttendanceType>
+                //<Attendance DateTime="2014/10/1">
+                //	<Period Name="一" />
+                //</Attendance>
+                //<Attendance DateTime="2014/10/3">
+                //	<Period Name="五" />
+                //</Attendance>
+                //</AttendanceData>
 
-				foreach (XElement attData in srcdata.Elements("AttendanceData"))
-				{
-					string className = attData.ElementText("ClassName");
-					string dateTime = attData.ElementText("DateTime");
+                foreach (XElement attData in srcdata.Elements("AttendanceData"))
+                {
+                    string studentNumber = attData.ElementText("StudentNumber");
+                    string attendanceType = attData.ElementText("AttendanceType");
+                    string type = Setup.AbsenceTypeMapping.ContainsKey(attendanceType) ? Setup.AbsenceTypeMapping[attendanceType] : string.Empty;
+                    //attData.Element("AttendanceType").SetValue(type);
+                    foreach (XElement attAttendance in attData.Descendants("Attendance"))
+                    {
+                        string dateTime = attAttendance.AttributeText("DateTime");
 
-					ClassDateTime cdt = new ClassDateTime(className, dateTime);
+                        StudentNumberDateTime cdt = new StudentNumberDateTime(studentNumber, dateTime);
 
-					if (Classes.ContainsKey(cdt))
-						Classes.Remove(cdt);
+                        if (StudentNumberAttendances.ContainsKey(cdt))
+                            StudentNumberAttendances.Remove(cdt);
 
-					Classes.Add(cdt, new List<CardAttendance>());
+                        StudentNumberAttendances.Add(cdt, new List<CardAttendance>());
 
-					foreach (XElement attrecord in attData.Elements("Attendance"))
-					{
-						//沒有資料就讀下一筆。
-						if (!attrecord.HasElements) continue;
+                        CardAttendance card_att = new CardAttendance(CardType.請假卡);
+                        card_att.DateTime = dateTime;
+                        //card_att.ClassName = "";	// FillStudentInfo 自動填入
+                        //card_att.SeatNo = "";// FillStudentInfo 自動填入
+                        card_att.XmlData = attData;
+                        card_att.StudentNumber = studentNumber;
+                        card_att.FillStudentInfo(StuFinder);
 
-						string seatNo = attrecord.AttributeText("SeatNo");
+                        StudentNumberAttendances[cdt].Add(card_att);
 
-						CardAttendance card_att = new CardAttendance(CardType.點名卡);
-						card_att.DateTime = dateTime;
-						card_att.ClassName = className;
-						card_att.SeatNo = seatNo;
-						card_att.XmlData = attrecord;
-						card_att.FillStudentInfo(StuFinder);
+                        foreach (XElement period in attAttendance.Descendants("Period"))
+                        {
+                            period.SetAttributeValue("Reason", type);
+                            string pname = period.AttributeText("Name");
+                            int index = Setup.PeriodIndex[pname];
 
-						Classes[cdt].Add(card_att);
+                            card_att.Periods[index] = type;
+                        }
+                    }
+                }
+                dgvAttendance.DataSource = StudentNumberAttendances.GetBindingList();
 
-						foreach (XElement period in attrecord.Elements("Period"))
-						{
-							string pname = period.AttributeText("Name");
-							string reason = period.AttributeText("Reason");
-							int index = Setup.PeriodIndex[pname];
+                List<string> studentid_list = this.GroupStudentIdByStudentNumber();
+                //將資料庫中的缺曠記錄讀出來。
+                CurrentAttData = GetAttendanceInDB(studentid_list);
 
-							card_att.Periods[index] = reason;
-						}
-					}
-				}
+                bool hasStudentNotFound = false;
+                foreach (DataGridViewRow row in dgvAttendance.Rows)
+                {
+                    CardAttendance ca = row.DataBoundItem as CardAttendance;
 
-				dgvAttendance.DataSource = Classes.GetBindingList();
+                    if (ca.SRecord == null)
+                    {
+                        DataGridViewCellStyle style = row.DefaultCellStyle.Clone();
+                        style.BackColor = Color.Red;
+                        style.ForeColor = Color.Wheat;
+                        row.DefaultCellStyle = style;
+                        hasStudentNotFound = true;
+                    }
+                }
 
-				List<string> studentid_list = GroupStudentID();
-				//將資料庫中的缺曠記錄讀出來。
-				CurrentAttData = GetAttendanceInDB(studentid_list);
-
-				bool hasStudentNotFound = false;
-				foreach (DataGridViewRow row in dgvAttendance.Rows)
-				{
-					CardAttendance ca = row.DataBoundItem as CardAttendance;
-
-					if (ca.SRecord == null)
-					{
-						DataGridViewCellStyle style = row.DefaultCellStyle.Clone();
-						style.BackColor = Color.Red;
-						style.ForeColor = Color.Wheat;
-						row.DefaultCellStyle = style;
-						hasStudentNotFound = true;
-					}
-				}
-
-				if (hasStudentNotFound)
-				{
-					MessageBox.Show("有部份班級座號找不到對應的學生，該資料將不被處理與儲存。\n\n(資料被標記為紅色)", "ischool");
-				}
-			}
-			catch (Exception ex)
-			{
-				RTOut.WriteError(ex);
-				MessageBox.Show(ex.Message);
-			}
+                if (hasStudentNotFound)
+                {
+                    MessageBox.Show("有部份學號找不到對應的學生，該資料將不被處理與儲存。\n\n(資料被標記為紅色)", "ischool");
+                }
+            }
+            catch (Exception ex)
+            {
+                RTOut.WriteError(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

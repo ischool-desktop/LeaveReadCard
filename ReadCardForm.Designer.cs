@@ -52,11 +52,10 @@
             this.p8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBeginRead = new DevComponents.DotNetBar.ButtonX();
-            this.btnLeave = new DevComponents.DotNetBar.ButtonItem();
             this.btnAbsence = new DevComponents.DotNetBar.ButtonItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.intValue = new DevComponents.Editors.IntegerInput();
+            this.StarReadCardbtn = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
@@ -361,35 +360,9 @@
             this.p10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p10.Visible = false;
             // 
-            // btnBeginRead
-            // 
-            this.btnBeginRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBeginRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBeginRead.AutoExpandOnClick = true;
-            this.btnBeginRead.BackColor = System.Drawing.Color.Transparent;
-            this.btnBeginRead.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnBeginRead.Location = new System.Drawing.Point(828, 14);
-            this.btnBeginRead.Name = "btnBeginRead";
-            this.btnBeginRead.Size = new System.Drawing.Size(75, 23);
-            this.btnBeginRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnBeginRead.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnLeave});
-            this.btnBeginRead.TabIndex = 4;
-            this.btnBeginRead.Text = "開始讀卡";
-            // 
-            // btnLeave
-            // 
-            this.btnLeave.GlobalItem = false;
-            this.btnLeave.Name = "btnLeave";
-            this.btnLeave.Text = "請假卡";
-            this.btnLeave.Click += new System.EventHandler(this.btnLeave_Click);
-            // 
             // btnAbsence
             // 
-            this.btnAbsence.GlobalItem = false;
             this.btnAbsence.Name = "btnAbsence";
-            this.btnAbsence.Text = "點名卡";
-            this.btnAbsence.Click += new System.EventHandler(this.btnAbsence_Click);
             // 
             // labelX3
             // 
@@ -426,15 +399,28 @@
             this.intValue.TabIndex = 5;
             this.intValue.Value = 5;
             // 
+            // StarReadCardbtn
+            // 
+            this.StarReadCardbtn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.StarReadCardbtn.BackColor = System.Drawing.Color.Transparent;
+            this.StarReadCardbtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.StarReadCardbtn.Location = new System.Drawing.Point(828, 14);
+            this.StarReadCardbtn.Name = "StarReadCardbtn";
+            this.StarReadCardbtn.Size = new System.Drawing.Size(95, 23);
+            this.StarReadCardbtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.StarReadCardbtn.TabIndex = 7;
+            this.StarReadCardbtn.Text = "開始請假讀卡";
+            this.StarReadCardbtn.Click += new System.EventHandler(this.StarReadCardbtn_Click);
+            // 
             // ReadCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(947, 499);
+            this.Controls.Add(this.StarReadCardbtn);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.intValue);
-            this.Controls.Add(this.btnBeginRead);
             this.Controls.Add(this.dgvAttendance);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
@@ -465,9 +451,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvAttendance;
-		private DevComponents.DotNetBar.ButtonX btnBeginRead;
 		private DevComponents.DotNetBar.ButtonItem btnAbsence;
-        private DevComponents.DotNetBar.ButtonItem btnLeave;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.Editors.IntegerInput intValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn chDateTime;
@@ -486,5 +470,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn p8;
         private System.Windows.Forms.DataGridViewTextBoxColumn p9;
         private System.Windows.Forms.DataGridViewTextBoxColumn p10;
+        private DevComponents.DotNetBar.ButtonX StarReadCardbtn;
     }
 }
