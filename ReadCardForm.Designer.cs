@@ -36,6 +36,10 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.dgvAttendance = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.btnAbsence = new DevComponents.DotNetBar.ButtonItem();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.intValue = new DevComponents.Editors.IntegerInput();
+            this.StarReadCardbtn = new DevComponents.DotNetBar.ButtonX();
             this.chDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +56,6 @@
             this.p8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAbsence = new DevComponents.DotNetBar.ButtonItem();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.intValue = new DevComponents.Editors.IntegerInput();
-            this.StarReadCardbtn = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
@@ -68,7 +68,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(848, 465);
+            this.btnClose.Location = new System.Drawing.Point(820, 462);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -82,7 +82,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(767, 465);
+            this.btnSave.Location = new System.Drawing.Point(739, 462);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -200,10 +200,63 @@
             this.dgvAttendance.RowHeadersWidth = 25;
             this.dgvAttendance.RowTemplate.Height = 24;
             this.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendance.Size = new System.Drawing.Size(915, 408);
+            this.dgvAttendance.Size = new System.Drawing.Size(887, 405);
             this.dgvAttendance.TabIndex = 3;
             this.dgvAttendance.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAttendance_CellFormatting);
             this.dgvAttendance.SelectionChanged += new System.EventHandler(this.dgvAttendance_SelectionChanged);
+            // 
+            // btnAbsence
+            // 
+            this.btnAbsence.Name = "btnAbsence";
+            // 
+            // labelX3
+            // 
+            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX3.AutoSize = true;
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(597, 15);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(74, 21);
+            this.labelX3.TabIndex = 6;
+            this.labelX3.Text = "濃淡辨識度";
+            // 
+            // intValue
+            // 
+            this.intValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.intValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.intValue.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.intValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.intValue.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.intValue.Location = new System.Drawing.Point(677, 13);
+            this.intValue.MaxValue = 12;
+            this.intValue.MinValue = 1;
+            this.intValue.Name = "intValue";
+            this.intValue.ShowUpDown = true;
+            this.intValue.Size = new System.Drawing.Size(80, 25);
+            this.intValue.TabIndex = 5;
+            this.intValue.Value = 5;
+            // 
+            // StarReadCardbtn
+            // 
+            this.StarReadCardbtn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.StarReadCardbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StarReadCardbtn.BackColor = System.Drawing.Color.Transparent;
+            this.StarReadCardbtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.StarReadCardbtn.Location = new System.Drawing.Point(800, 14);
+            this.StarReadCardbtn.Name = "StarReadCardbtn";
+            this.StarReadCardbtn.Size = new System.Drawing.Size(95, 23);
+            this.StarReadCardbtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.StarReadCardbtn.TabIndex = 7;
+            this.StarReadCardbtn.Text = "開始請假讀卡";
+            this.StarReadCardbtn.Click += new System.EventHandler(this.StarReadCardbtn_Click);
             // 
             // chDateTime
             // 
@@ -252,103 +305,113 @@
             // 
             // p0
             // 
-            this.p0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p0.DataPropertyName = "Period0";
             this.p0.HeaderText = "早/升";
             this.p0.Name = "p0";
             this.p0.ReadOnly = true;
             this.p0.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p0.Visible = false;
+            this.p0.Width = 64;
             // 
             // p1
             // 
-            this.p1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p1.DataPropertyName = "Period1";
             this.p1.HeaderText = "一";
             this.p1.Name = "p1";
             this.p1.ReadOnly = true;
             this.p1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p1.Visible = false;
+            this.p1.Width = 46;
             // 
             // p2
             // 
-            this.p2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p2.DataPropertyName = "Period2";
             this.p2.HeaderText = "二";
             this.p2.Name = "p2";
             this.p2.ReadOnly = true;
             this.p2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p2.Visible = false;
+            this.p2.Width = 46;
             // 
             // p3
             // 
-            this.p3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p3.DataPropertyName = "Period3";
             this.p3.HeaderText = "三";
             this.p3.Name = "p3";
             this.p3.ReadOnly = true;
             this.p3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p3.Visible = false;
+            this.p3.Width = 46;
             // 
             // p4
             // 
-            this.p4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p4.DataPropertyName = "Period4";
             this.p4.HeaderText = "四";
             this.p4.Name = "p4";
             this.p4.ReadOnly = true;
             this.p4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p4.Visible = false;
+            this.p4.Width = 46;
             // 
             // p5
             // 
-            this.p5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p5.DataPropertyName = "Period5";
             this.p5.HeaderText = "午休";
             this.p5.Name = "p5";
             this.p5.ReadOnly = true;
             this.p5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p5.Visible = false;
+            this.p5.Width = 59;
             // 
             // p6
             // 
-            this.p6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p6.DataPropertyName = "Period6";
             this.p6.HeaderText = "五";
             this.p6.Name = "p6";
             this.p6.ReadOnly = true;
             this.p6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p6.Visible = false;
+            this.p6.Width = 46;
             // 
             // p7
             // 
-            this.p7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p7.DataPropertyName = "Period7";
             this.p7.HeaderText = "六";
             this.p7.Name = "p7";
             this.p7.ReadOnly = true;
             this.p7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p7.Visible = false;
+            this.p7.Width = 46;
             // 
             // p8
             // 
-            this.p8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p8.DataPropertyName = "Period8";
             this.p8.HeaderText = "七";
             this.p8.Name = "p8";
             this.p8.ReadOnly = true;
             this.p8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p8.Visible = false;
+            this.p8.Width = 46;
             // 
             // p9
             // 
-            this.p9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.p9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.p9.DataPropertyName = "Period9";
             this.p9.HeaderText = "八";
             this.p9.Name = "p9";
             this.p9.ReadOnly = true;
             this.p9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p9.Visible = false;
+            this.p9.Width = 46;
             // 
             // p10
             // 
@@ -360,64 +423,12 @@
             this.p10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.p10.Visible = false;
             // 
-            // btnAbsence
-            // 
-            this.btnAbsence.Name = "btnAbsence";
-            // 
-            // labelX3
-            // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX3.AutoSize = true;
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(625, 15);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(74, 21);
-            this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "濃淡辨識度";
-            // 
-            // intValue
-            // 
-            this.intValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.intValue.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.intValue.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.intValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.intValue.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.intValue.Location = new System.Drawing.Point(705, 13);
-            this.intValue.MaxValue = 12;
-            this.intValue.MinValue = 1;
-            this.intValue.Name = "intValue";
-            this.intValue.ShowUpDown = true;
-            this.intValue.Size = new System.Drawing.Size(80, 25);
-            this.intValue.TabIndex = 5;
-            this.intValue.Value = 5;
-            // 
-            // StarReadCardbtn
-            // 
-            this.StarReadCardbtn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.StarReadCardbtn.BackColor = System.Drawing.Color.Transparent;
-            this.StarReadCardbtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.StarReadCardbtn.Location = new System.Drawing.Point(828, 14);
-            this.StarReadCardbtn.Name = "StarReadCardbtn";
-            this.StarReadCardbtn.Size = new System.Drawing.Size(95, 23);
-            this.StarReadCardbtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.StarReadCardbtn.TabIndex = 7;
-            this.StarReadCardbtn.Text = "開始請假讀卡";
-            this.StarReadCardbtn.Click += new System.EventHandler(this.StarReadCardbtn_Click);
-            // 
             // ReadCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(947, 499);
+            this.ClientSize = new System.Drawing.Size(919, 496);
             this.Controls.Add(this.StarReadCardbtn);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.intValue);
@@ -429,7 +440,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.DoubleBuffered = true;
-            this.MinimumSize = new System.Drawing.Size(963, 538);
+            this.MinimumSize = new System.Drawing.Size(935, 535);
             this.Name = "ReadCardForm";
             this.Text = "請假讀卡";
             this.Load += new System.EventHandler(this.ReadCardForm_Load);
@@ -454,6 +465,7 @@
 		private DevComponents.DotNetBar.ButtonItem btnAbsence;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.Editors.IntegerInput intValue;
+        private DevComponents.DotNetBar.ButtonX StarReadCardbtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn chClassName;
         private System.Windows.Forms.DataGridViewTextBoxColumn chSeatNo;
@@ -470,6 +482,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn p8;
         private System.Windows.Forms.DataGridViewTextBoxColumn p9;
         private System.Windows.Forms.DataGridViewTextBoxColumn p10;
-        private DevComponents.DotNetBar.ButtonX StarReadCardbtn;
     }
 }

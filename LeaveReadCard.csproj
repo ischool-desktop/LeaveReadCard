@@ -124,6 +124,12 @@
     <Compile Include="ReadCardForm.Designer.cs">
       <DependentUpon>ReadCardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReadCardInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReadCardInformation.Designer.cs">
+      <DependentUpon>ReadCardInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="SetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReadCardForm.resx">
       <DependentUpon>ReadCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadCardInformation.resx">
+      <DependentUpon>ReadCardInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetupForm.resx">
       <DependentUpon>SetupForm.cs</DependentUpon>

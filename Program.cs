@@ -22,23 +22,31 @@ namespace LeaveReadCard
         {
             RibbonBarItemManager ribbon = FISCA.Presentation.MotherForm.RibbonBarItems;
 
-            ribbon["學務作業", "讀卡系統"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
+            ribbon["學務作業", "讀卡系統"]["請假讀卡"].Image = Properties.Resources.ReadCard;
+            ribbon["學務作業", "讀卡系統"]["請假讀卡"].Size = RibbonBarButton.MenuButtonSize.Large;
+            MenuButton button = ribbon["學務作業", "讀卡系統"]["請假讀卡"];
+            //button.Image = Properties.Resources.ReadCard;
+            button.Enable = UserAcl.Current[ReadCardFormCode].Executable;
+            button.Click += delegate
+            {
+                new ReadCardForm().ShowDialog();
+            };
 
-            MenuButton button = ribbon["學務作業", "讀卡系統"]["設定"]["請假讀卡設定"];
+            ribbon["學務作業", "讀卡系統"]["設定"].Image = Properties.Resources.sandglass_unlock_64;
+            ribbon["學務作業", "讀卡系統"]["設定"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            button = ribbon["學務作業", "讀卡系統"]["設定"]["請假讀卡設定"];
             button.Enable = UserAcl.Current[SetupFormCoode].Executable;
             button.Click += delegate
             {
                 new SetupForm().ShowDialog();
             };
 
-            ribbon["學務作業", "讀卡系統"]["讀卡"].Image = Properties.Resources.ReadCard;
-
-            button = ribbon["學務作業", "讀卡系統"]["讀卡"]["請假卡"];
-            //button.Image = Properties.Resources.ReadCard;
-            button.Enable = UserAcl.Current[ReadCardFormCode].Executable;
-            button.Click += delegate
+            // 2017/12/07，羿均，新增【讀取卡片資訊】功能
+            MenuButton mb = MotherForm.RibbonBarItems["學務作業", "讀卡系統"]["設定"]["讀卡解析-請假卡"];
+            mb.Enable = true;
+            mb.Click += delegate
             {
-                new ReadCardForm().ShowDialog();
+                new ReadCardInformation().ShowDialog();
             };
 
             Catalog catalog = RoleAclSource.Instance["學務作業"]["功能按鈕"];
@@ -81,7 +89,7 @@ namespace LeaveReadCard
             }
             catch
             {
-                MessageBox.Show("讀卡解析資料未設定，請聯絡澔學客服人員!");
+                MessageBox.Show("請假讀卡解析資料未設定，請執行讀卡解析並聯絡客服人員!");
             }
             
         }
